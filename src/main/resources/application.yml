@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show_sql: true
+  properties:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+  h2:
+    console:
+      enabled: true
