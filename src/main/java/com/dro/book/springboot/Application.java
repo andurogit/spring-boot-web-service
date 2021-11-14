@@ -3,6 +3,7 @@ package com.dro.book.springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// @EnableJpaAuditing 설정 분리
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {

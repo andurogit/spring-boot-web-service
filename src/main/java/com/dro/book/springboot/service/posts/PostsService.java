@@ -2,6 +2,7 @@ package com.dro.book.springboot.service.posts;
 
 import com.dro.book.springboot.domain.posts.Posts;
 import com.dro.book.springboot.domain.posts.PostsRepository;
+import com.dro.book.springboot.web.dto.PostsListsResponseDto;
 import com.dro.book.springboot.web.dto.PostsResponseDto;
 import com.dro.book.springboot.web.dto.PostsSaveRequestDto;
 import com.dro.book.springboot.web.dto.PostsUpdateRequestDto;
@@ -9,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor // final 로 선언 된 빈을 생성자를 이용하여 주입 의존성 변경 시 마다 생성자 코드가 변경 되는 처리 어노테이션 처리
 @Service
@@ -42,5 +45,19 @@ public class PostsService {
         Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
 
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional // readOnly 옵션이 안먹네...
+    public List<PostsListsResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListsResponseDto::new) // .map(posts -> new PostsListResponseDto(posts))
+                .collect(Collectors.toList());
+    }
+
+    public void delete (Long id) {
+        Posts posts = postsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id" + id));
+
+        postsRepository.delete(posts);
     }
 }

@@ -1,5 +1,6 @@
 package com.dro.book.springboot.domain.posts;
 
+import com.dro.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor // 기본생성자 추가 public Posts() {}
 @Entity // 테이블과 링크될 클래스 명시 Id 컬럼 필수
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     /**
      * PK 는 Long type 지정 권장

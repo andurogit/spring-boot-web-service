@@ -1,6 +1,9 @@
 package com.dro.book.springboot.domain.posts;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * JpaRepository 확장 구현
@@ -8,4 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * 인자값2 : PK type
  */
 public interface PostsRepository extends JpaRepository<Posts,Long> {
+    @Query("SELECT p from Posts p ORDER BY p.id DESC")
+    List<Posts> findAllDesc();
 }
