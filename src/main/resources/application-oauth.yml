@@ -4,14 +4,14 @@ spring:
       client:
         registration:
           google:
-            client-id: 793031147227-ja1b9rb0s20s7bi6ptp1urgkd8jdrllr.apps.googleusercontent.com
-            client-secret: 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
+            client-id: "clientid"
+            client-secret: "clientsecret"
             scope:
               - profile
               - email
           naver:
-            client-id: mGSyoxyuvq13GbKiyKHf
-            client-secret: xTTOYCYknA
+            client-id: "clientid"
+            client-secret: "clientsecret"
             redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
             authorization_grant_type: authorization_code
             scope:
